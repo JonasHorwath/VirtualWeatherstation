@@ -1,41 +1,25 @@
+import java.util.List;
+
 public class WeatherStation {
 
-    String name;
-    String time;
-    private double temperature, humidity, pressure, latitude, longitude;
+    private String weatherStationName;
+    private List<WeatherStationEntry> weatherStationEntries;
 
-    public WeatherStation(String name, String time, double temperature, double humidity, double pressure, double latitude, double longitude) {
-        this.name = name;
-        this.time = time;
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.pressure = pressure;
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public WeatherStation(String weatherStationName) {
+        this.weatherStationName = weatherStationName;
     }
 
-    public double getTemperatureInCelsius() {
-        return temperature;
+    public WeatherStation(String weatherStationName, List<WeatherStationEntry> weatherStationEntries) {
+        this.weatherStationName = weatherStationName;
+        this.weatherStationEntries = weatherStationEntries;
     }
 
-    public double getTemperatureInFahrenheit() {
-        return temperature;
+    public List<WeatherStationEntry> getWeatherStationEntries() {
+        return weatherStationEntries;
     }
 
-    public double getHumidity() {
-        return humidity;
-    }
+    public void addEntry () {
 
-    public double getPressure() {
-        return pressure;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
     }
 
 }
