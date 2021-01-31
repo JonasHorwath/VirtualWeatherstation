@@ -38,7 +38,7 @@ public class Parser {
         return data;
     }
 
-    public static List<WeatherStationEntry> parseToWeatherStationList(List<String> list) {
+    public static List<WeatherStationEntry> parseToWeatherStationEntryList(List<String> list) {
 
         List<WeatherStationEntry> weatherStationEntry = new ArrayList<>();
         String []results = new String[12];
@@ -113,7 +113,7 @@ public class Parser {
     public static boolean useRegex(String input) {
 
         // Compile regular expression
-        Pattern pattern = Pattern.compile("^.*:\\u0040.*N/.*W_.*t.*$");
+        Pattern pattern = Pattern.compile(".*:@[0-9]+zE|W_[0-9]+/[0-9]+g[0-9]+t.*");
         // Match regex against input
         Matcher matcher = pattern.matcher(input);
         // Use results...

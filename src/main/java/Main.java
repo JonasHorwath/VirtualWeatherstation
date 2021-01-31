@@ -14,20 +14,37 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         // Working
+        AprsClient aprsClient = new AprsClient();
         List<String> weatherData;
         List<WeatherStationEntry> weatherStationEntries;
         FileDao fileDao = new FileDao("src/main/Data/WeatherData.txt");
         fileDao.readData();
         weatherData = Parser.filter(fileDao.getData());
         FileCreator.writeToTextFile(Parser.filter(fileDao.getData()), "WeatherDataFiltered");
-        weatherStationEntries = Parser.parseToWeatherStationList(weatherData);
+        weatherStationEntries = Parser.parseToWeatherStationEntryList(weatherData);
+
+        WeatherStationEntry entry;
 
         for (WeatherStationEntry s:
              weatherStationEntries) {
             System.out.println(s.toString());
+        }
+
+        Thread thread = new Thread(aprsClient);
+        aprsClient.connect();
+        thread.start();
+        Thread.sleep(10000);
+        thread.interrupt();
+        weatherStationEntries = Parser.parseToWeatherStationEntryList(aprsClient.getData());
+
+        for (WeatherStationEntry s :
+                weatherStationEntries) {
+
+            System.out.println(s.toString());
+
         }
 
     }

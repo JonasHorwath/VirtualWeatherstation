@@ -25,9 +25,9 @@ public class WeatherStationEntry {
         this.humidityInPercent = inputs[5] == null ? null: Double.parseDouble(inputs[5]);
         this.pressureInTenthsOfMillibars = inputs[6] == null ? null: Double.parseDouble(inputs[6]);
         this.latitude = inputs[7] == null ? null: Double.parseDouble(inputs[7].substring(0, inputs[7].length()-2));
-        this.latitudeNorthSouth = inputs[7].charAt(inputs[7].length() - 1);
+        this.latitudeNorthSouth = inputs[7] == null ? 'A' : inputs[7].charAt(inputs[7].length() - 1);
         this.longitude = inputs[8] == null ? null: Double.parseDouble(inputs[8].substring(0, inputs[8].length()-2));
-        this.longitudeEastWest = inputs[8].charAt(inputs[8].length() - 1);
+        this.longitudeEastWest = inputs[8] == null ? 'A' : inputs[8].charAt(inputs[8].length() - 1);
         this.rainInHundredthsOfAnInchOneHour = inputs[9] == null ? null: Double.parseDouble(inputs[9]);
         this.rainInHundredthsOfAnInchOneDay = inputs[10] == null ? null: Double.parseDouble(inputs[10]);
         this.rainInHundredthsOfAnInchSinceMidnight = inputs[11] == null ? null: Double.parseDouble(inputs[11]);
