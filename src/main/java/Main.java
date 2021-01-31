@@ -25,6 +25,11 @@ public class Main {
         FileCreator.writeToTextFile(Parser.filter(fileDao.getData()), "WeatherDataFiltered");
         weatherStationEntries = Parser.parseToWeatherStationList(weatherData);
 
+        for (WeatherStationEntry s:
+             weatherStationEntries) {
+            System.out.println(s.toString());
+        }
+
     }
 
 }
