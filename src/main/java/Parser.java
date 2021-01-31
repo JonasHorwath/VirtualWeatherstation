@@ -6,15 +6,15 @@ import java.util.regex.Pattern;
 public class Parser {
 
     private static Pattern[] patterns = {
-            Pattern.compile(":@([0-9]+)z"),
-            Pattern.compile("E|W_([0-9]+)/"),
+            Pattern.compile(":[@|=]([0-9]+)z"),
+            Pattern.compile("[E|W]_([0-9]+)/"),
             Pattern.compile("/([0-9]+)g"),
             Pattern.compile("g([0-9]+)t"),
-            Pattern.compile("t([0-9]+)r"),
+            Pattern.compile("t([0-9]+)[r|P]"),
             Pattern.compile("h([0-9]+)b"),
             Pattern.compile("b([0-9]+)"),
-            Pattern.compile("[N|S]/([0-9]+.[0-9]+[E|W])_"),
-            Pattern.compile("z([0-9]+.[0-9]+N|S)/"),
+            Pattern.compile("z(-?[0-9]+.[0-9]+[N|S])/"),
+            Pattern.compile("[N|S]/(-?[0-9]+.[0-9]+[E|W])_"),
             Pattern.compile("r([0-9]+)p"),
             Pattern.compile("p([0-9]+)P"),
             Pattern.compile("P([0-9]+)h")};

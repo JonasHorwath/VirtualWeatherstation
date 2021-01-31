@@ -1,3 +1,5 @@
+import java.time.format.DateTimeFormatter;
+
 public class WeatherStationEntry {
 
     private String time;
@@ -7,13 +9,12 @@ public class WeatherStationEntry {
     private Double temperatureInFahrenheit;
     private Double humidityInPercent;
     private Double pressureInTenthsOfMillibars;
-    private Double latitude;
-    private char latitudeNorthSouth;
-    private Double longitude;
-    private char longitudeEastWest;
+    private String latitude;
+    private String longitude;
     private Double rainInHundredthsOfAnInchOneHour;
     private Double rainInHundredthsOfAnInchOneDay;
     private Double rainInHundredthsOfAnInchSinceMidnight;
+
 
     public WeatherStationEntry(String []inputs) {
 
@@ -24,10 +25,8 @@ public class WeatherStationEntry {
         this.temperatureInFahrenheit = inputs[4] == null ? null: Double.parseDouble(inputs[4]);
         this.humidityInPercent = inputs[5] == null ? null: Double.parseDouble(inputs[5]);
         this.pressureInTenthsOfMillibars = inputs[6] == null ? null: Double.parseDouble(inputs[6]);
-        this.latitude = inputs[7] == null ? null: Double.parseDouble(inputs[7].substring(0, inputs[7].length()-2));
-        this.latitudeNorthSouth = inputs[7] == null ? 'A' : inputs[7].charAt(inputs[7].length() - 1);
-        this.longitude = inputs[8] == null ? null: Double.parseDouble(inputs[8].substring(0, inputs[8].length()-2));
-        this.longitudeEastWest = inputs[8] == null ? 'A' : inputs[8].charAt(inputs[8].length() - 1);
+        this.latitude = inputs[7] == null ? null : inputs[7];
+        this.longitude = inputs[8] == null ? null : inputs[8];
         this.rainInHundredthsOfAnInchOneHour = inputs[9] == null ? null: Double.parseDouble(inputs[9]);
         this.rainInHundredthsOfAnInchOneDay = inputs[10] == null ? null: Double.parseDouble(inputs[10]);
         this.rainInHundredthsOfAnInchSinceMidnight = inputs[11] == null ? null: Double.parseDouble(inputs[11]);
@@ -41,8 +40,8 @@ public class WeatherStationEntry {
                                Double temperatureInFahrenheit,
                                Double humidityInPercent,
                                Double pressureInTenthsOfMillibars,
-                               Double latitude,
-                               Double longitude,
+                               String latitude,
+                               String longitude,
                                Double rainInHundredthsOfAnInchOneHour,
                                Double rainInHundredthsOfAnInchOneDay,
                                Double rainInHundredthsOfAnInchSinceMidnight) {
@@ -78,11 +77,11 @@ public class WeatherStationEntry {
         return pressureInTenthsOfMillibars;
     }
 
-    public Double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public Double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
@@ -125,9 +124,7 @@ public class WeatherStationEntry {
                 ", humidityInPercent=" + humidityInPercent +
                 ", pressureInTenthsOfMillibars=" + pressureInTenthsOfMillibars +
                 ", latitude=" + latitude +
-                ", latitudeNorthSouth=" + latitudeNorthSouth +
                 ", longitude=" + longitude +
-                ", longitudeEastWest=" + longitudeEastWest +
                 ", rainInHundredthsOfAnInchOneHour=" + rainInHundredthsOfAnInchOneHour +
                 ", rainInHundredthsOfAnInchOneDay=" + rainInHundredthsOfAnInchOneDay +
                 ", rainInHundredthsOfAnInchSinceMidnight=" + rainInHundredthsOfAnInchSinceMidnight +

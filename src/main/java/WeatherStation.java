@@ -2,15 +2,11 @@ import java.util.List;
 
 public class WeatherStation {
 
-    private String weatherStationName;
+    private Location location;
     private List<WeatherStationEntry> weatherStationEntries;
 
-    public WeatherStation(String weatherStationName) {
-        this.weatherStationName = weatherStationName;
-    }
-
-    public WeatherStation(String weatherStationName, List<WeatherStationEntry> weatherStationEntries) {
-        this.weatherStationName = weatherStationName;
+    public WeatherStation(Location location, List<WeatherStationEntry> weatherStationEntries) {
+        this.location = location;
         this.weatherStationEntries = weatherStationEntries;
     }
 

@@ -1,3 +1,5 @@
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, ParseException {
 
         // Working
         AprsClient aprsClient = new AprsClient();
@@ -33,6 +35,9 @@ public class Main {
             System.out.println(s.toString());
         }
 
+        System.out.println(Double.parseDouble("-290.30"));
+
+
         Thread thread = new Thread(aprsClient);
         aprsClient.connect();
         thread.start();
@@ -43,7 +48,7 @@ public class Main {
         for (WeatherStationEntry s :
                 weatherStationEntries) {
 
-            System.out.println(s.toString());
+            GeocodeApi.getLocation(s.getLatitude(), s.getLongitude());
 
         }
 
