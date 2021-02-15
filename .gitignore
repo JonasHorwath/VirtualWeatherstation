@@ -3,3 +3,4 @@
 /.idea/
 VirtualWeatherstation.iml
 /doc/
+src/main/java/Backend/Constants.java

@@ -1,5 +1,6 @@
 package Connections;
 
+import Backend.Constants;
 import Models.Location;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,7 +14,7 @@ import java.net.http.HttpResponse;
 
 public class GeocodeApi {
 
-    public static Location getLocation (String latitude, String longitude) throws IOException, InterruptedException, ParseException {
+    public static Location getLocation(String latitude, String longitude) throws IOException, InterruptedException, ParseException {
 
         if (latitude != null && longitude != null) {
             Double latitudeInDecimal = convertToDecimal(latitude);
@@ -23,7 +24,7 @@ public class GeocodeApi {
                     .uri(URI.create("https://trueway-geocoding.p.rapidapi.com/ReverseGeocode?location=" +
                             latitudeInDecimal + "%2C" +
                             longitudeInDecimal + "&language=en"))
-                    .header("x-rapidapi-key", "560d2450dbmsh508b456efcbd98fp12d380jsn97bb0fd29d14")
+                    .header("x-rapidapi-key", Constants.API_KEY)
                     .header("x-rapidapi-host", "trueway-geocoding.p.rapidapi.com")
                     .method("GET", HttpRequest.BodyPublishers.noBody())
                     .build();
@@ -33,6 +34,7 @@ public class GeocodeApi {
             JSONObject jsonObject = (JSONObject) new JSONParser().parse(response.body());
 
             System.out.println(jsonObject.toJSONString());
+
         }
 
         return null;
