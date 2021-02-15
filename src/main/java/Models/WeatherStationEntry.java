@@ -1,3 +1,5 @@
+package Models;
+
 import java.time.format.DateTimeFormatter;
 
 public class WeatherStationEntry {
@@ -25,8 +27,8 @@ public class WeatherStationEntry {
         this.temperatureInFahrenheit = inputs[4] == null ? null: Double.parseDouble(inputs[4]);
         this.humidityInPercent = inputs[5] == null ? null: Double.parseDouble(inputs[5]);
         this.pressureInTenthsOfMillibars = inputs[6] == null ? null: Double.parseDouble(inputs[6]);
-        this.latitude = inputs[7] == null ? null : inputs[7];
-        this.longitude = inputs[8] == null ? null : inputs[8];
+        this.latitude = inputs[7];
+        this.longitude = inputs[8];
         this.rainInHundredthsOfAnInchOneHour = inputs[9] == null ? null: Double.parseDouble(inputs[9]);
         this.rainInHundredthsOfAnInchOneDay = inputs[10] == null ? null: Double.parseDouble(inputs[10]);
         this.rainInHundredthsOfAnInchSinceMidnight = inputs[11] == null ? null: Double.parseDouble(inputs[11]);
@@ -115,7 +117,7 @@ public class WeatherStationEntry {
 
     @Override
     public String toString() {
-        return "WeatherStationEntry{" +
+        return "Models.WeatherStationEntry{" +
                 "time='" + time + '\'' +
                 ", windDirection=" + windDirection +
                 ", windSpeedAvg=" + windSpeedAvg +

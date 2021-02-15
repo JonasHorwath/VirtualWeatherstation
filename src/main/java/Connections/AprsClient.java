@@ -1,3 +1,7 @@
+package Connections;
+
+import Backend.DataParser;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -17,7 +21,7 @@ public class AprsClient implements Runnable {
 
             String wxmsg;
             while((wxmsg = reader.readLine()) != null && !Thread.interrupted()) {
-                if (Parser.useRegex(wxmsg)) {
+                if (DataParser.useRegex(wxmsg)) {
                     data.add(wxmsg);
                 }
             }
@@ -25,7 +29,6 @@ public class AprsClient implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -55,7 +58,7 @@ public class AprsClient implements Runnable {
         String message;
 
         while((message = reader.readLine()) != null || !Thread.interrupted()) {
-            if (Parser.useRegex(message)) {
+            if (DataParser.useRegex(message)) {
                 data.add(message);
             }
         }

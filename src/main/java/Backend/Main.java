@@ -1,3 +1,10 @@
+package Backend;
+
+import Connections.AprsClient;
+import Connections.GeocodeApi;
+import Filehandler.FileCreator;
+import Filehandler.FileDao;
+import Models.WeatherStationEntry;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -9,7 +16,7 @@ import java.util.List;
  * @version 1.0
  * @see FileCreator
  * @see FileDao
- * @see Parser
+ * @see DataParser
  * @see WeatherStationEntry
  *
  */
@@ -24,9 +31,9 @@ public class Main {
         List<WeatherStationEntry> weatherStationEntries;
         FileDao fileDao = new FileDao("src/main/Data/WeatherData.txt");
         fileDao.readData();
-        weatherData = Parser.filter(fileDao.getData());
-        FileCreator.writeToTextFile(Parser.filter(fileDao.getData()), "WeatherDataFiltered");
-        weatherStationEntries = Parser.parseToWeatherStationEntryList(weatherData);
+        weatherData = DataParser.filter(fileDao.getData());
+        FileCreator.writeToTextFile(DataParser.filter(fileDao.getData()), "WeatherDataFiltered");
+        weatherStationEntries = DataParser.parseToWeatherStationEntryList(weatherData);
 
         WeatherStationEntry entry;
 
@@ -35,19 +42,18 @@ public class Main {
             System.out.println(s.toString());
         }
 
-        System.out.println(Double.parseDouble("-290.30"));
-
 
         Thread thread = new Thread(aprsClient);
         aprsClient.connect();
         thread.start();
         Thread.sleep(10000);
         thread.interrupt();
-        weatherStationEntries = Parser.parseToWeatherStationEntryList(aprsClient.getData());
+        weatherStationEntries = DataParser.parseToWeatherStationEntryList(aprsClient.getData());
 
         for (WeatherStationEntry s :
                 weatherStationEntries) {
 
+            System.out.println(s.toString());
             GeocodeApi.getLocation(s.getLatitude(), s.getLongitude());
 
         }

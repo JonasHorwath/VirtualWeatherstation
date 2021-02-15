@@ -1,17 +1,15 @@
+package Connections;
+
+import Models.Location;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.URI;
-import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 
 public class GeocodeApi {
 
@@ -43,7 +41,7 @@ public class GeocodeApi {
 
     private static Double convertToDecimal(String coordinate) {
 
-        Double convertedCoordinate = 0.0;
+        double convertedCoordinate = 0.0;
 
         if (coordinate.charAt(coordinate.length() - 1) == 'N') {
             convertedCoordinate += Double.parseDouble(coordinate.substring(0, 1));

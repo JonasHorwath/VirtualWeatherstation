@@ -1,9 +1,13 @@
+package Backend;
+
+import Models.WeatherStationEntry;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+public class DataParser {
 
     private static Pattern[] patterns = {
             Pattern.compile(":[@|=]([0-9]+)z"),
@@ -53,44 +57,6 @@ public class Parser {
             }
 
             weatherStationEntry.add(new WeatherStationEntry(results));
-
-            /*System.out.println(entry);
-            matcher = timePattern.matcher(entry);
-            matcher.find();
-            System.out.print("Time: " + matcher.group(1));
-            matcher = longitudePattern.matcher(entry);
-            matcher.find();
-            System.out.print(" Longitude: " + matcher.group(1));
-            matcher = latitudePattern.matcher(entry);
-            matcher.find();
-            System.out.print(" Latitude: " + matcher.group(1));
-            matcher = windDirectionPattern.matcher(entry);
-            matcher.find();
-            System.out.print(" WindDirection: " + matcher.group(1));
-            matcher = windSpeedAvgPattern.matcher(entry);
-            matcher.find();
-            System.out.print(" WindSpeedAvg: " + matcher.group(1));
-            matcher = windSpeedMaxPattern.matcher(entry);
-            matcher.find();
-            System.out.print(" WindSpeedMax: " + matcher.group(1));
-            matcher = temperaturePattern.matcher(entry);
-            matcher.find();
-            System.out.print(" Temperature: " + matcher.group(1));
-            matcher = rainInHundredthsOfAnInchOneHourPattern.matcher(entry);
-            matcher.find();
-            System.out.print(" RainInHundredthsOfAnInchOneHour: " + matcher.group(1));
-            matcher = rainInHundredthsOfAnInchOneDayPattern.matcher(entry);
-            matcher.find();
-            System.out.print(" RainInHundredthsOfAnInchOneDay: " + matcher.group(1));
-            matcher = rainInHundredthsOfAnInchSinceMidnightPattern.matcher(entry);
-            matcher.find();
-            System.out.print(" RainInHundredthsOfAnInchSinceMidnight: " + matcher.group(1));
-            matcher = humidityInPercentPattern.matcher(entry);
-            matcher.find();
-            System.out.print(" HumidityInPercent: " + matcher.group(1));
-            matcher = pressureInTenthsOfMillibarsPattern.matcher(entry);
-            matcher.find();
-            System.out.println(" PressureInTenthsOfMillibars: " + matcher.group(1));*/
 
         }
 
